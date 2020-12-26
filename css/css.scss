@@ -1,0 +1,468 @@
+@import '_null';
+
+@mixin text-in-border {
+   font-size: 35px;
+   font-weight: normal;
+   text-shadow: -1px -1px #000,
+      0 1px 0 #444;
+   color: #222;
+   transition: all 1s;
+
+   &:hover {
+      color: white;
+   }
+}
+
+@mixin text-red-style {
+   text-shadow: 1px 1px 1px rgb(255, 18, 18),
+      -1px 1px 1px rgb(253, 112, 112);
+   color: rgb(253, 0, 0);
+   transition: all .5s;
+   cursor: pointer;
+
+   &:hover {
+      color: white;
+   }
+}
+
+@mixin align-center {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.wrapper {
+   width: 100%;
+   background: rgb(44, 44, 44);
+   color: #fff;
+
+   .container {
+
+      .header {
+         width: 100%;
+         padding: 15px 10px;
+         position: relative;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         @include text-in-border();
+         font-size: 20px;
+         text-align: center;
+         animation: numbColor 3s linear infinite;
+      }
+
+      .main {
+         width: 100%;
+         margin-top: 30px;
+         display: flex;
+         flex: row no-wrap;
+
+         &__country {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+            border: 1px solid rgb(245, 255, 55);   
+
+
+            .country__global {
+               width: 100%;
+               height: 100px;
+               display: flex;
+               flex-direction: column;
+               justify-content: center;
+               align-items: center;
+
+               .global__text {
+                  @include text-in-border;
+               }
+
+               .global__all-infected {
+                  font-size: 35px;
+                  font-weight: normal;
+                  text-shadow: 1px 1px 1px rgb(255, 18, 18),
+                     -1px 1px 1px rgb(252, 89, 89);
+                  color: rgb(255, 13, 13);
+                  transition: all .5s;
+               }
+            }
+
+            .main__case {
+               width: 100%;
+               margin-top: 20px;
+               display: flex;
+               flex-direction: column;
+               justify-content: center;
+               align-items: center;
+
+               .case__text {
+                  .text__info {
+                     margin-bottom: 10px;
+                     @include align-center;
+                     @include text-in-border;
+                  }
+
+                  .text__choose-case {
+                     margin-bottom: 10px;
+                     display: flex;
+                     justify-content: space-around;
+                     align-items: center;
+
+                     .choose-case__country {
+                        @include text-in-border;
+
+                        &:hover {
+                           color: #fff;
+                           cursor: pointer
+                        }
+
+                     }
+
+                     .choose-case__separator {
+                        @include text-in-border;
+                        text-shadow: -1px -1px rgb(35, 240, 17),
+                           0 1px 0 rgb(7, 218, 7);
+                        color: rgb(43, 255, 43);
+                        color: rgb(43, 255, 43);
+                        padding: 0 5px;
+
+                     }
+
+                     .choose-case__region {
+                        @include text-in-border;
+
+                        &:hover {
+                           color: #fff;
+                           cursor: pointer
+                        }
+                     }
+                  }
+               }
+
+               .case__table {
+                  width: 100%;
+
+                  &__row {
+                     display: flex;
+                     margin: 5px 0;
+
+                     .row__number {
+                        width: 50%;
+                        @include text-red-style;
+                        @include align-center;
+                        font-size: 25px;
+
+
+
+                     }
+
+                     .row__contry {
+                        width: 50%;
+                        @include text-in-border;
+                        @include align-center;
+                        font-size: 25px;
+
+                     }
+
+                  }
+
+
+               }
+
+               .text__info {}
+
+               .text__choose-case {
+                  .choose-case__country {}
+
+                  .choose-case__region {}
+               }
+            }
+         }
+
+         &__map {
+            padding: 0 20px;
+            width: 100%;
+            #map-world {
+               width: 100%;
+               height: 500px;
+               margin: 30px 0 5px 0;
+               border: 2px solid silver;
+               border-radius: 6px;
+               background: rgb(58, 58, 58);
+            }
+            .toggle {
+               position: fixed;
+               top: 0;
+               left: 0;
+               width: 100%;
+            }
+
+            .sphere {
+               fill: #000000;
+            }
+
+            .country:hover {
+               fill: rgb(255, 0, 0);
+            }
+         }
+      }
+
+      .info {
+         width: 100%;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+
+         .info__all {
+            .table-container {
+               margin: 10px;
+    
+               .table {
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                  margin-bottom: 10px;
+                  .table-header {
+                     text-shadow: -1px -1px #000,
+                     0 1px 0 #444;
+                     color: #222;
+                     transition: all 1s;
+                     font-size: 100px;
+                     padding-bottom: 10px;
+                     animation: param 5s linear infinite;
+                     @keyframes param {
+                        0% {
+                           color: #000000;
+                        }
+                        25% {
+                           color: #4b4b4b;
+                        }
+                        50% {
+                           color: #ffffff;
+                        }
+
+                        25% {
+                           color: #4b4b4b;
+                        }
+                     
+                        100% {
+                           color: #000000;
+                        }
+                     }
+                  }
+
+                  .table-number {
+                     @include text-in-border();
+                     animation: numbColor 3s linear infinite;
+                     @keyframes numbColor {
+                        0% {
+                           color: #08ff00;
+                        }
+                        20% {
+                           color: #e2ff23;
+                        }
+                        40% {
+                           color: #ff0000;
+                        }
+                        60% {
+                           color: #ff00bf;
+                        }
+                        80% {
+                           color: #4400ff;
+                        }
+                        100% {
+                           color: #00ffc8;
+                        }
+                     }
+                  }
+               }
+
+               .previous, .next {
+                  @include text-red-style();
+                  font-size: 30px;
+                  background: none;
+                  &:hover {}
+
+                  &:active {}
+
+                  &:focus {}
+               }
+
+               .return {
+                  @include text-red-style();
+                  font-size: 30px;
+                  background: none;
+                  padding: 0 10px;
+               }
+            }
+         }
+
+
+
+         .diagram {
+            margin-top: 20px;
+            width: 90%;
+         }
+      }
+   }
+}
+
+
+
+
+
+
+.use-keyboard-input {
+   display: block;
+   width: 90%;
+   margin: 30px auto;
+   padding: 10px;
+   font-size: 20px;
+   height: calc(100vh - 380px);
+   min-height: 300px;
+}
+
+.keyboard {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   padding: 5px 0;
+   background: grey;
+   box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+   user-select: none;
+   transition: bottom 0.4s;
+}
+
+.keyboard--hidden {
+   bottom: -100%;
+}
+
+.keyboard__keys {
+   text-align: center;
+}
+
+.keyboard__key {
+   height: 45px;
+   width: 6%;
+   max-width: 90px;
+   margin: 3px;
+   border-radius: 4px;
+   border: none;
+   background-color: rgba(255, 255, 255, 0.2);
+   transition: background-color 0.1s;
+   color: #ffffff;
+   font-size: 1.05rem;
+   outline: none;
+   cursor: pointer;
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   vertical-align: top;
+   padding: 0;
+   -webkit-tap-highlight-color: transparent;
+   position: relative;
+}
+
+.keyboard__key:active {
+   background-color: rgba(255, 255, 255, 0.12);
+}
+
+.keyboard__key--wide {
+   width: 12%;
+}
+
+.keyboard__key--extra-wide {
+   width: 36%;
+   max-width: 500px;
+}
+
+.keyboard__key--activatable::after {
+   content: '';
+   top: 10px;
+   right: 10px;
+   position: absolute;
+   width: 8px;
+   height: 8px;
+   background: rgba(0, 0, 0, 0.4);
+   border-radius: 50%;
+}
+
+.keyboard__key--active::after {
+   background: #08ff00;
+}
+
+.keyboard__key--dark {
+   background: rgba(0, 0, 0, 0.25);
+}
+
+.pressed {
+   background-color: rgba(255, 255, 255, 0.12);
+   transition: background-color 0.1s;
+}
+
+.list-row #img {
+   width: 20px;
+   height: 10px;
+}
+
+.input-list {
+   margin: 5px 0;
+   font-size: 16px;
+   padding: 2px;
+   width: 100%;
+   border: none;
+   border-bottom: 1px solid #ccc;
+
+   &:focus {
+      outline: none;
+   }
+}
+
+.list-row {
+   padding: 2px 5px;
+   display: flex;
+   justify-content: space-between;
+   @include text-red-style();
+   font-size: 17px;
+   font-weight: 200;
+}
+
+.list-container {
+   overflow-y: scroll;
+   border: 3px solid rgb(255, 8, 8);  
+   height: 500px;
+}
+
+.list-container::-webkit-scrollbar {
+   width: 10px;
+}
+
+.list-container::-webkit-scrollbar-button {
+   background: black;
+   display: none;
+}
+
+.list-container::-webkit-scrollbar-track-piece {
+   background: #888;
+}
+
+.list-container::-webkit-scrollbar-thumb {
+   background: #eee;
+}
+
+.list-header {
+   margin: 5px 0;
+   font-size: 20px;
+   @include text-in-border();
+}
+
+.list {
+   margin-top: 5px;
+}
+
+.invisible {
+   display: none;
+}
